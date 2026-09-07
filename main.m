@@ -8,8 +8,8 @@ maxFEs = 80000;            % Max fitness evaluations per run
 
 %%
 Summary = table();
-ConvergenceTable = table();  % added for convergece curve
-RawRunsTable = table();      % added To generate box plots and Friedman tests
+ConvergenceTable = table();
+RawRunsTable = table();
 tol = 1e-2; 
 
 for K = datasets
@@ -20,10 +20,10 @@ for K = datasets
 
     results = zeros(1, nbExperiment);
     time_runs = zeros(1, nbExperiment);
-    nfe_runs = zeros(1, nbExperiment);   %added for the final nfe
-    SRO2_counter_runs = zeros(1, nbExperiment);   % a counter to store how many times the SRO2 is used per-run
+    nfe_runs = zeros(1, nbExperiment); 
+    SRO2_counter_runs = zeros(1, nbExperiment); 
     SRO2_percentage_runs = zeros(1, nbExperiment);
-    allHistories = cell(nbExperiment,1); %added for convergence curve
+    allHistories = cell(nbExperiment,1);
     
     for run = 1:nbExperiment
         rng(run);
@@ -39,12 +39,11 @@ for K = datasets
     instance_SRO2_percent = 100 * sum(SRO2_counter_runs) / sum(nfe_runs);
     fprintf('Dataset kp_%d: SRO2 usage over all runs = %.2f%%\n', K, instance_SRO2_percent);
 
-    % added to accumulate raw runs for box plots and non-parametric tests
     tempRaw = table(repmat({['kp_' num2str(K)]}, nbExperiment, 1), (1:nbExperiment)', results', nfe_runs', SRO2_counter_runs', SRO2_percentage_runs', repmat(instance_SRO2_percent, nbExperiment, 1), ...
     'VariableNames', {'Dataset','Run','FinalFitness','FinalNFE','SRO2Count','SRO2Percent','InstanceSRO2Percent'});
     RawRunsTable = [RawRunsTable; tempRaw];
 
-    %% Convergence data  (added)
+    %% Convergence data
     maxNFE_recorded = 0;
 
     for r=1:nbExperiment
@@ -64,7 +63,7 @@ for K = datasets
         fitness_matrix(:,r) = interp1(unique_nfe, unique_fit, 1:maxNFE_recorded, 'previous', 'extrap');
     end
 
-    % average convergence curve
+    % Average convergence curve
     avgFitness = mean(fitness_matrix,2);
     temp = table(repmat({['kp_' num2str(K)]}, maxNFE_recorded,1), (1:maxNFE_recorded)', avgFitness,...
     'VariableNames', {'Dataset', 'nfe', 'AverageFitness'});
@@ -86,6 +85,6 @@ for K = datasets
 end
 
 disp(Summary);
-writetable(ConvergenceTable, 'Jaya2_Convergence.csv');  %added for convergece curve
-writetable(RawRunsTable, 'Jaya2_Raw_Runs.csv'); % added to export raw run metrics
-writetable(Summary, 'Jaya2_Knapsack.csv');  
+writetable(ConvergenceTable, 'Jaya2_Convergence.csv'); % Convergece curve
+writetable(RawRunsTable, 'Jaya2_Raw_Runs.csv'); % Raw run
+writetable(Summary, 'Jaya2_Knapsack.csv'); % Summary statistics
