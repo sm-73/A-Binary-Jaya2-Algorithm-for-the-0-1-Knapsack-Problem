@@ -1,4 +1,4 @@
-function [best_f, fitness_history,nfe, SRO2_counter] = Jaya2_withRP(pop_size, maxFEs, dim, capacity, weights, profit) % added fitness_history
+function [best_f, fitness_history,nfe, SRO2_counter] = Jaya2_withRP(pop_size, maxFEs, dim, capacity, weights, profit)
 
 max_pop_size = pop_size;
 min_pop_size = 3;
@@ -24,7 +24,7 @@ end
 nfe = pop_size;
 f_new = f;
 
-%added for convergence curve
+% Convergence curve
 fitness_history = [];
 initial_best = max(f);
 fitness_history = [fitness_history; 1 initial_best];
@@ -54,7 +54,7 @@ while nfe < maxFEs
        
         x_new(i,:) = x(i,:);
         
-        % JAYA2 solution update mechanism
+        % BiJaya2 solution update mechanism
         
         for j = 1:dim
             if rand < 0.2
@@ -68,7 +68,7 @@ while nfe < maxFEs
             end
         end
 
-        %  Apply Repair Operator (RO) if solution is infeasible
+        %  Apply Repair Operator (SRO2) if solution is infeasible
         f_check = fobj(x_new(i,:), capacity, weights, profit);
         nfe = nfe + 1; 
 
@@ -204,7 +204,6 @@ function [sol, f_val, currentWeight] = repair_phase(sol, capacity, weights, prof
 end
 
 %% Improvement Phase
-%  Adds items with the highest RO while capacity allows
 function [sol, f_val] = improve_phase(sol, capacity, weights, profit, improveOrder, initial_fit, currWeight)
 
     currentWeight = currWeight;
