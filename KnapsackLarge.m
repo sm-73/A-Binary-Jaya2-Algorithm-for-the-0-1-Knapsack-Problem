@@ -1,5 +1,4 @@
 function [no_items, fobj, capacity, weights, profit, knapsack_struct] = KnapsackLarge(K) 
-    % Convert numeric input (like 1) to string (like 'kp_1') if necessary
     if isnumeric(K)
         K = ['kp_', num2str(K)];
     end
@@ -179,7 +178,7 @@ function [no_items, fobj, capacity, weights, profit, knapsack_struct] = Knapsack
                         44, 86, 1, 100, 28, 4, 16];
             optimum  = 3614;
 
-        % Large-scale instances (kp_21 to kp_30)
+        % kp21-kp30 obtained from C.A.G.E.S.Data
         case 'kp_21'
             capacity = 1863633;
             weights  = [12630, 284975, 583838, 575342, 780934, 164152, 912739, 412657];
@@ -250,7 +249,7 @@ function [no_items, fobj, capacity, weights, profit, knapsack_struct] = Knapsack
                         679085, 164965, 603431, 1601666, 1826086, 1235821];
             optimum  = 5337472;
 
-            % Extra large instances with correlation
+            % 18 large-scale instances were taken from David Pisinger’s benchmark
             % No correlation
 
         case 'kp_31' 
@@ -428,8 +427,6 @@ function [no_items, fobj, capacity, weights, profit, knapsack_struct] = Knapsack
     end
 
     no_items = length(weights);
-
-    % Consistent Objective function handle (same as Get_Knapsack_details.m)
     fobj = @(genes, cap, w, p) knapsack_objective_GA(genes, struct('weights', w, 'values', p, 'capacity', cap));
 
     knapsack_struct.weights  = weights;
