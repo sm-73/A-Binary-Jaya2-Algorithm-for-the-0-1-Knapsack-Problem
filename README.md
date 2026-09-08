@@ -13,11 +13,6 @@ This paper proposes Binary Jaya2(BiJaya2), anative binary version of the Jaya2 a
 - **Penalty Function + Two-Phase Repair Operator (SRO2)**: Infeasible solutions are flagged via a penalty function and corrected through a repair phase (removing low profit-to-weight items) followed by an improvement phase (greedily adding high profit-to-weight items).
 - **Comprehensive Evaluation**: BiJaya2 is benchmarked against five binary Jaya variants (SimJAYA-RL, IBJaya, BJaya-JS, DHJaya, and JayaX) and six established metaheuristics (GWO, SMA, SCA, HBA, PSA, and BMPA) across 30 small-scale and 18 large-scale KP01 benchmark instances, using Friedman ranking, success rate, and optimality gap.
 
-## Repository Contents
-
-- **MATLAB**: Implementation of the BiJaya2 algorithm.
-- **Python**: Scripts used to generate the convergence, execution time, and comparison figures reported in the paper.
-
 ## Authors
 
 - Sedra M. AlBasha: Data Science and Artificial Intelligence, College of Systems and Computer Engineering, Abdullah Al Salem University, Kuwait
