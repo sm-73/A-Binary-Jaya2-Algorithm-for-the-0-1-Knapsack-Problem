@@ -9,7 +9,7 @@ This paper proposes Binary Jaya2 (BiJaya2), a native binary version of the Jaya2
 - **Native binary bitwise update operator**: Guided by the locally best and locally worst neighbouring solutions within a ring topology, the operator probabilistically copies bits from the local best solution or complements bits from the local worst solution, controlled by a mutation probability (r1) and a selection probability (r2).
 - **Worst-Solution Re-initialization**: The global worst solution in the population is regenerated at each generation (using a Stochastic Greedy, profit-to-weight-biased construction strategy) to maintain population diversity and mitigate premature convergence.
 - **Penalty Function + Two-Phase Repair Operator (SRO2)**: Infeasible solutions are flagged via a penalty function and corrected through a repair phase (removing low profit-to-weight items) followed by an improvement phase (greedily adding high profit-to-weight items).
-- **Comprehensive Evaluation**: BiJaya2 is benchmarked against five binary Jaya variants (SimJAYA-RL, IBJaya, BJaya-JS, DHJaya, and JayaX) and six established metaheuristics (GWO, SMA, SCA, HBA, PSA, and BMPA) across 30 small-scale and 18 large-scale KP01 benchmark instances, using Friedman ranking, success rate, and optimality gap.
+- **Comprehensive Evaluation**: BiJaya2 is benchmarked against five binary Jaya variants (SimBJAYA-RL, IBJA, BJaya-JS, DHJaya, and JayaX) and seven established metaheuristics (GWO, SMA, SCA, HBA, PSA, BMPA, and HQIO) across 30 small-scale and 18 large-scale KP01 benchmark instances, using Friedman ranking, Wilcoxon and Nemenyi statistical tests, success rate, and optimality gap.
 
 ## Authors
 
