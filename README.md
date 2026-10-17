@@ -17,7 +17,6 @@ This paper proposes Binary Jaya2 (BiJaya2), a native binary version of the Jaya2
 - Sedra M. AlRamadan: Data Science and Artificial Intelligence, College of Systems and Computer Engineering, Abdullah Al Salem University, Kuwait
 - Mahamed G. H. Omran (Corresponding Author): Computer Systems Engineering, College of Systems and Computer Engineering, Abdullah Al Salem University, Kuwait
 
-## Citation
 
-If you use this code, please cite the paper (IEEE format):
+
 
